@@ -11,4 +11,6 @@ public interface TourmentProgramRepository extends JpaRepository<Program, Intege
     @Query(value = "SELECT * FROM ju_unpa.program where tourment_id=:id", nativeQuery=true)
     List<Program> findByProgramsOfTourment(int id);
 
+
+
 }

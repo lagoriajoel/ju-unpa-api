@@ -34,6 +34,11 @@ public class ProgramServiceImpl implements ProgramService {
     }
 
     @Override
+    public List<Program> guardarTodos(List<Program> programas) {
+        return programRepository.saveAll(programas);
+    }
+
+    @Override
     public void eliminar(int id) {
            programRepository.deleteById(id);
     }

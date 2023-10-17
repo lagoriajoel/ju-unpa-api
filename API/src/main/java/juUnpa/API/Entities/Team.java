@@ -51,9 +51,9 @@ public class Team {
     @JoinColumn(name="torneo_id")
     private Tourment tourment;
 
-    @OneToMany(mappedBy = "team_1", cascade = CascadeType.ALL, orphanRemoval = true)
-
-   private Set<Game> games=new HashSet<>();
+   // @OneToMany(mappedBy = "team_1", cascade = CascadeType.ALL, orphanRemoval = true)
+   // @JsonBackReference
+    //private Set<Game> games=new HashSet<>();
 
 
 }

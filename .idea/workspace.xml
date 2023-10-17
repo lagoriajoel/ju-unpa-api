@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="054a0631-51f8-4c0c-8172-ebdb23e30352" name="Changes" comment="">
+    <list default="true" id="054a0631-51f8-4c0c-8172-ebdb23e30352" name="Changes" comment="creacion de entidades">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/ApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/ApiApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TeamsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TeamsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TourmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TourmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/MatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TeamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TeamRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Team.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TourmentProgramRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TourmentProgramRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/MatchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/MatchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/MatchServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/ProgramService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/ProgramService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/ProgramServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/ProgramServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TeamService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TeamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TeamServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +73,20 @@
       <option name="presentableId" value="Default" />
       <updated>1696766227022</updated>
     </task>
+    <task id="LOCAL-00001" summary="creacion de entidades">
+      <created>1697456453830</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697456453830</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="metodos para mostrar equipos por torneos" />
+    <MESSAGE value="creacion de entidades" />
+    <option name="LAST_COMMIT_MESSAGE" value="creacion de entidades" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">

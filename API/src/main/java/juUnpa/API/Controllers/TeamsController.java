@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("/teams")
@@ -59,6 +60,20 @@ public class TeamsController {
     @PostMapping("/save")
     public ResponseEntity<?> guardar(@RequestBody Team team){
         return new ResponseEntity<>(Service.guardar(team),HttpStatus.CREATED);
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> actualizar(@PathVariable int id,@RequestBody Team team){
+
+        Optional<Team> optionalTeam= Service.listarPorId(id);
+
+        optionalTeam.get().setGoalAgainst(optionalTeam.get().getGoalAgainst()+ team.getGoalAgainst());
+        optionalTeam.get().setGoalFor(optionalTeam.get().getGoalFor()+ team.getGoalFor());
+        optionalTeam.get().setMatchLost(optionalTeam.get().getMatchLost()+team.getMatchLost());
+        optionalTeam.get().setMatchWon(optionalTeam.get().getMatchWon()+team.getMatchWon());
+        optionalTeam.get().setPoint(optionalTeam.get().getPoint() + team.getPoint());
+
+
+        return ResponseEntity.ok(Service.guardar(optionalTeam.get()));
     }
 
     @DeleteMapping("/delete/{id}")

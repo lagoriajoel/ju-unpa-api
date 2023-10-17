@@ -4,6 +4,7 @@ import juUnpa.API.Entities.Game;
 import juUnpa.API.Entities.Program;
 import juUnpa.API.Entities.Team;
 import juUnpa.API.Entities.Tourment;
+import juUnpa.API.Services.MatchService;
 import juUnpa.API.Services.ProgramService;
 import juUnpa.API.Services.TeamService;
 import juUnpa.API.Services.TourmentService;
@@ -24,6 +25,8 @@ public class TourmentController {
     TeamService teamService;
     @Autowired
     ProgramService programService;
+    @Autowired
+    MatchService gameService;
 
 
     @GetMapping("/list")
@@ -58,6 +61,29 @@ public class TourmentController {
           teamService.guardar(optionalTeam.get());
       });
 
+     /* int numeroFechas=0;
+      int numeroPartidos=0;
+      if (teams.size() % 2 == 0){
+          numeroFechas=teams.size()-1;
+          numeroPartidos=teams.size()/2;
+      }
+       else {
+          numeroFechas=teams.size();
+          numeroPartidos=(teams.size()+1)/2;
+      }
+
+
+
+        for (int i=0; i<numeroFechas;i++){
+            Program program=new Program();
+            program.setDescription("FECHA "+(i+1));
+            program.setTourment(tourmentOptional.get());
+            programService.guardar(program);
+
+        }*/
+         this.CrearFechas(idTorneo);
+
+
       return ResponseEntity.ok().build();
     }
     @PutMapping("/update/{id}")
@@ -76,7 +102,7 @@ public class TourmentController {
     }
     @PutMapping("/addProgram/{idTourment}")
     public ResponseEntity<?> agregarProgramacion(@PathVariable int idTourment){
-        //this.CrearFechas(idTourment);
+
         return ResponseEntity.ok().build();
     }
 
@@ -95,7 +121,7 @@ public class TourmentController {
 
 
 
-    /*void CrearFechas(int idTourment)
+     void CrearFechas(int idTourment)
 
 
     {
@@ -106,6 +132,10 @@ public class TourmentController {
         {
             Team teamEmpy=new Team();
             teamEmpy.setNombre("Libre");
+            teamEmpy.setTourment(tourmentOptional.get());
+            teamEmpy.setSport(ListTeam.get(0).getSport());
+            teamEmpy.setUnidadAcademica(ListTeam.get(0).getUnidadAcademica());
+
             Team newTeam=teamService.guardar(teamEmpy);
             ListTeam.add(newTeam); // If odd number of teams add a dummy
         }
@@ -119,6 +149,7 @@ public class TourmentController {
         teams.remove(0);
 
         int teamsSize = teams.size();
+        System.out.println(teamsSize);
 
         for (int day = 0; day < numDays; day++)
         {
@@ -127,49 +158,50 @@ public class TourmentController {
             Program newProgram=new Program();
             newProgram.setDescription("FECHA " + (day + 1));
             newProgram.setTourment(tourmentOptional.get());
-
-
             Program programSave=programService.guardar(newProgram);  //ok
 
             int teamIdx = day % teamsSize;
             //obtener el equipo
-            Optional<Team> teamX= teamService.listarPorId(teams.get(teamIdx).getId());
-            Optional<Team> team0= teamService.listarPorId(teams.get(0).getId());
+            Team teamX = teams.get(teamIdx);
+            Team team0= teams.get(0);
 
            //agregar el primer cruce a la fecha
              Set<Game> listaDeJuegos=new HashSet<>() ;
              Game firstGame=new Game();
 
-             firstGame.setTeam_1(teamX.get());
-             firstGame.setTeam_2(team0.get());
-             listaDeJuegos.add(firstGame);
-            // programSave.setGames(listaDeJuegos);
-             //programService.save(programSave);
-              System.out.println(( teams.get(teamIdx).getNombre()+" "+ ListTeam.get(0).getNombre()));
+
+             firstGame.setTeam_1(teams.get(teamIdx));
+             firstGame.setTeam_2(ListTeam.get(0));
+             firstGame.setProgram(programSave);
+             Game gameGuardar=gameService.guardar(firstGame);
+             listaDeJuegos.add(gameGuardar);
+
+             System.out.println(( teams.get(teamIdx).getNombre()+" "+ ListTeam.get(0).getNombre()));
 
             for (int idx = 1; idx < halfSize; idx++)
             {
                 int firstTeam = (day + idx) % teamsSize;
-                Optional<Team> teamf= teamService.listarPorId(teams.get(firstTeam).getId());
+                Team teamf= teams.get(firstTeam);
                 int secondTeam = (day  + teamsSize - idx) % teamsSize;
-                Optional<Team> teamS= teamService.listarPorId(teams.get(secondTeam).getId());
+                Team teamS= teams.get(secondTeam);
 
                 System.out.println((teams.get(firstTeam).getNombre()+" "+ teams.get(secondTeam).getNombre()));
                //se agregar el resto de los cruces
                 Game game=new Game();
-                game.setTeam_1(teams.get(teamf.get().getId()));
-                game.setTeam_2(teams.get(teamS.get().getId()));
-                listaDeJuegos.add(game);
+                game.setTeam_1(teams.get(firstTeam));
+                game.setTeam_2(teams.get(secondTeam));
+                game.setProgram(programSave);
+                Game gameGuard=gameService.guardar(game);
+                System.out.println(gameGuard);
 
-                System.out.println(listaDeJuegos);
 
             }
-            programSave.setGames(listaDeJuegos);
 
-            programService.guardar(programSave);
+
+
 
         }
-    }*/
+    }
 
 
 }

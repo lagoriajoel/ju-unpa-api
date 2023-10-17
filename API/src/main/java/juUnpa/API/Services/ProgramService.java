@@ -14,6 +14,8 @@ public interface ProgramService {
     Optional<Program> listarPorId(int id);
     Program guardar(Program program);
 
+    List<Program> guardarTodos(List<Program> programas);
+
     void  eliminar(int id);
 
  }
