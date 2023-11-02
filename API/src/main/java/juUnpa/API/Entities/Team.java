@@ -44,6 +44,7 @@ public class Team {
     private int matchTied;
     private int goalFor;
     private int goalAgainst;
+    private int goalDifference;
     private int point;
 
     @ManyToOne(fetch = FetchType.LAZY)

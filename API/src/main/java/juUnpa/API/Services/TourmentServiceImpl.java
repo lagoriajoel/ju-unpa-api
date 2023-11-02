@@ -17,6 +17,11 @@ public class TourmentServiceImpl implements TourmentService {
     }
 
     @Override
+    public Optional<Tourment> listOfSport(int idSport) {
+        return torneoRepository.findByTourmentOfSport(idSport);
+    }
+
+    @Override
     public Optional<Tourment> listarPorId(int id) {
         return torneoRepository.findById(id);
     }

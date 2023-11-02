@@ -10,6 +10,7 @@ public interface ProgramService {
     List<Program> listar();
 
     List<Program> listarPorTorneo(int id);
+    List<Program> listarPorDeporte(int id);
 
     Optional<Program> listarPorId(int id);
     Program guardar(Program program);

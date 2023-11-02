@@ -24,6 +24,11 @@ public class ProgramServiceImpl implements ProgramService {
     }
 
     @Override
+    public List<Program> listarPorDeporte(int id) {
+        return programRepository.findByProgramsOfSport(id);
+    }
+
+    @Override
     public Optional<Program> listarPorId(int id) {
         return programRepository.findById(id);
     }

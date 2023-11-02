@@ -1,6 +1,7 @@
 package juUnpa.API.Services;
 
 import juUnpa.API.Entities.Team;
+import juUnpa.API.Entities.UnidadAcademica;
 import juUnpa.API.Repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,8 @@ import java.util.Optional;
 public class TeamServiceImpl implements TeamService {
     @Autowired
     TeamRepository teamRepository;
+    @Autowired
+    UnidadAcademicaService unidadAcademicaService;
     @Override
     public List<Team> listar() {
         return teamRepository.findAll();
@@ -23,6 +26,10 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team guardar(Team team) {
+          Optional<UnidadAcademica> unidadAcademicaOptional= unidadAcademicaService.listarPorId(team.getUnidadAcademica().getId());
+          if (!unidadAcademicaOptional.isPresent())
+
+          team.setUnidadAcademica(unidadAcademicaOptional.get());
         return teamRepository.save(team);
     }
 

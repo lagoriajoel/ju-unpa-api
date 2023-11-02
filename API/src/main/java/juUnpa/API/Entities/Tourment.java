@@ -20,8 +20,16 @@ public class Tourment {
 
     private String nombre;
 
+    @OneToOne()
+    @JoinColumn(name = "sport_id", referencedColumnName = "id")
+    private Sport sport;
+
     private int numTeams;
 
+    private int numRondas;
+
+    private int edition;
+    
     @OneToMany(mappedBy = "tourment", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Program> programList;
 

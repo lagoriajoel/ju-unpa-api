@@ -21,6 +21,8 @@ public class Program {
     @OneToMany(mappedBy="program")
     private Set<Game> games;
 
+    private int numRonda;
+
     @ManyToOne(fetch = FetchType.LAZY)
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JsonBackReference

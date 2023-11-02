@@ -21,12 +21,12 @@ public class GameController {
 
 
     @GetMapping("/list")
-    public ResponseEntity<List<?>> listarJuegos(){
+    public ResponseEntity<List<?>> listGames(){
         return new ResponseEntity<>(gameService.listar(), HttpStatus.OK);
     }
 
     @GetMapping("list/{id}")
-    public ResponseEntity<?> obtenerPorId(@PathVariable int id){
+    public ResponseEntity<?> gamesOfId(@PathVariable int id){
         Optional<Game> program = gameService.listarPorId(id);
 
         if(program != null) {
@@ -37,7 +37,7 @@ public class GameController {
     }
 
     @GetMapping("listOfProgram/{id}")
-    public ResponseEntity<?> obtenerPorPrograma(@PathVariable int id){
+    public ResponseEntity<?> gamesForPrograms(@PathVariable int id){
 
         List<Game> programList= gameService.listarPorPrograma(id);
         if (programList.isEmpty()){
@@ -48,11 +48,11 @@ public class GameController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> guardar(@RequestBody Game game){
+    public ResponseEntity<?> save(@RequestBody Game game){
         return new ResponseEntity<>(gameService.guardar(game),HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> actualizar(@PathVariable int id, @RequestBody Game game){
+    public ResponseEntity<?> uapdate(@PathVariable int id, @RequestBody Game game){
 
         Optional<Game> gameOptional=gameService.listarPorId(id);
 
@@ -69,7 +69,7 @@ public class GameController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> eliminar(@PathVariable int id){
+    public ResponseEntity<?> delete(@PathVariable int id){
         gameService .eliminar(id);
         return ResponseEntity.ok().build();
     }

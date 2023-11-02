@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface TourmentService {
 
     List<Tourment> listar();
+
+    Optional<Tourment> listOfSport(int idSport);
     Optional<Tourment> listarPorId(int id);
     Tourment guardar(Tourment tourment);
 

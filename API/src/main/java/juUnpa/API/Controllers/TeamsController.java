@@ -37,7 +37,7 @@ public class TeamsController {
     }
 
     @GetMapping("listOfSport/{id}")
-    public ResponseEntity<?> obtenerPorDisiciplina(@PathVariable int id){
+    public ResponseEntity<?> teamsOfSport(@PathVariable int id){
 
           List<Team>teamsofSport= Service.listarPorDisciplina(id);
         if (teamsofSport.isEmpty()){
@@ -47,7 +47,7 @@ public class TeamsController {
 
     }
     @GetMapping("listOfTourment/{id}")
-    public ResponseEntity<?> obtenerPorTorneo(@PathVariable int id){
+    public ResponseEntity<?> teamsOfTourment(@PathVariable int id){
 
         List<Team>teamsofSport= Service.listarPorTorneo(id);
         if (teamsofSport.isEmpty()){
@@ -58,11 +58,19 @@ public class TeamsController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> guardar(@RequestBody Team team){
-        return new ResponseEntity<>(Service.guardar(team),HttpStatus.CREATED);
+    public ResponseEntity<?> save(@RequestBody Team team){
+
+
+        Team teamOptional=Service.guardar(team);
+       if (teamOptional==null) {
+           return ResponseEntity.badRequest().body(Collections.singletonMap("Mensaje", "Error al guardar Equipo"));
+
+       }
+
+        return new ResponseEntity<>(teamOptional,HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> actualizar(@PathVariable int id,@RequestBody Team team){
+    public ResponseEntity<?> update(@PathVariable int id,@RequestBody Team team){
 
         Optional<Team> optionalTeam= Service.listarPorId(id);
 
@@ -70,14 +78,17 @@ public class TeamsController {
         optionalTeam.get().setGoalFor(optionalTeam.get().getGoalFor()+ team.getGoalFor());
         optionalTeam.get().setMatchLost(optionalTeam.get().getMatchLost()+team.getMatchLost());
         optionalTeam.get().setMatchWon(optionalTeam.get().getMatchWon()+team.getMatchWon());
+        optionalTeam.get().setMatchTied(optionalTeam.get().getMatchTied()+team.getMatchTied());
+
         optionalTeam.get().setPoint(optionalTeam.get().getPoint() + team.getPoint());
+        optionalTeam.get().setGoalDifference(optionalTeam.get().getGoalFor()-optionalTeam.get().getGoalAgainst());
 
 
         return ResponseEntity.ok(Service.guardar(optionalTeam.get()));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> eliminar(@PathVariable int id){
+    public ResponseEntity<?> delete(@PathVariable int id){
         Service.eliminar(id);
         return ResponseEntity.ok().build();
     }

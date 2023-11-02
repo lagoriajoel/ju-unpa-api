@@ -23,12 +23,13 @@ public class ProgramController {
     TourmentService tourmentService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<?>> listarFechas(){
+    public ResponseEntity<List<?>> programsList(){
         return new ResponseEntity<>(programService.listar(), HttpStatus.OK);
     }
 
     @GetMapping("list/{id}")
-    public ResponseEntity<?> obtenerPorId(@PathVariable int id){
+    public ResponseEntity<?> programsOfID(@PathVariable int id){
+
         Optional<Program> program = programService.listarPorId(id);
 
         if(program != null) {
@@ -39,7 +40,7 @@ public class ProgramController {
     }
 
     @GetMapping("listOfTourment/{id}")
-    public ResponseEntity<?> obtenerPorTorneo(@PathVariable int id){
+    public ResponseEntity<?> programsOfTourment(@PathVariable int id){
 
         List<Program> programList= programService.listarPorTorneo(id);
         if (programList.isEmpty()){
@@ -49,18 +50,29 @@ public class ProgramController {
 
     }
 
+    @GetMapping("listOfSport/{id}")
+    public ResponseEntity<?> programsOfSport(@PathVariable int id){
+
+        List<Program> programList= programService.listarPorDeporte(id);
+        if (programList.isEmpty()){
+            return ResponseEntity.badRequest().body(Collections.singletonMap("Mensaje", "No existen equipos para esta disciplina"));
+        }
+        return ResponseEntity.ok(programList);
+
+    }
+
     @PostMapping("/save")
-    public ResponseEntity<?> guardar(@RequestBody Program program){
+    public ResponseEntity<?> save(@RequestBody Program program){
         return new ResponseEntity<>(programService.guardar(program),HttpStatus.CREATED);
     }
 
     @PostMapping("/saveAll")
-    public ResponseEntity<?> guardarTodos(@RequestBody List<Program> programs){
+    public ResponseEntity<?> saveAll(@RequestBody List<Program> programs){
         return new ResponseEntity<>(programService.guardarTodos(programs),HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> eliminar(@PathVariable int id){
+    public ResponseEntity<?> delete(@PathVariable int id){
         programService.eliminar(id);
         return ResponseEntity.ok().build();
     }

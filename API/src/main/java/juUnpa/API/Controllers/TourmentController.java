@@ -34,6 +34,16 @@ public class TourmentController {
         return new ResponseEntity<>(tourmentService.listar(), HttpStatus.OK);
     }
 
+    @GetMapping("/listOfSport/{id}")
+    public ResponseEntity<?> listarTorneoPorDeporte(@PathVariable int id){
+        Optional<Tourment> listOptional=tourmentService.listOfSport(id);
+        if (!listOptional.isPresent()){
+            return ResponseEntity.badRequest().body(Collections.singletonMap("Mensaje", "Aun no se ha creado un torneo para esta Disciplina"));
+        }
+
+        return ResponseEntity.ok(listOptional);
+    }
+
     @GetMapping("list/{id}")
     public ResponseEntity<?> obtenerDisciplinaPorId(@PathVariable int id){
         Tourment tourment = tourmentService.listarPorId(id).get();
@@ -49,8 +59,8 @@ public class TourmentController {
     public ResponseEntity<?> guardarDisciplina(@RequestBody Tourment tourment){
         return new ResponseEntity<>(tourmentService.guardar(tourment),HttpStatus.CREATED);
     }
-    @PostMapping("/addTeams/{idTorneo}")
-    public ResponseEntity<?> agregarEquiposAlTorneo(@RequestBody List<Team> teams, @PathVariable int idTorneo){
+    @PostMapping("/addTeams/{idTorneo}/{rondas}")
+    public ResponseEntity<?> agregarEquiposAlTorneo(@RequestBody List<Team> teams, @PathVariable int idTorneo, @PathVariable int rondas){
        Optional<Tourment> tourmentOptional=tourmentService.listarPorId(idTorneo);
        if (!tourmentOptional.isPresent())
            return ResponseEntity.badRequest().body(Collections.singletonMap("Mensaje", "Torneo no encontrado"));
@@ -61,27 +71,7 @@ public class TourmentController {
           teamService.guardar(optionalTeam.get());
       });
 
-     /* int numeroFechas=0;
-      int numeroPartidos=0;
-      if (teams.size() % 2 == 0){
-          numeroFechas=teams.size()-1;
-          numeroPartidos=teams.size()/2;
-      }
-       else {
-          numeroFechas=teams.size();
-          numeroPartidos=(teams.size()+1)/2;
-      }
-
-
-
-        for (int i=0; i<numeroFechas;i++){
-            Program program=new Program();
-            program.setDescription("FECHA "+(i+1));
-            program.setTourment(tourmentOptional.get());
-            programService.guardar(program);
-
-        }*/
-         this.CrearFechas(idTorneo);
+         this.CrearFechas(idTorneo, rondas);
 
 
       return ResponseEntity.ok().build();
@@ -108,9 +98,27 @@ public class TourmentController {
 
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> eliminarContenido(@PathVariable int id){
+    public ResponseEntity<Void> eliminarTorneo(@PathVariable int id){
 
         Optional<Tourment> torneoOptional = tourmentService.listarPorId(id);
+
+                List<Team> teams=teamService.listarPorTorneo(id);
+
+                teams.forEach(team -> {
+                       Optional<Team> teamOptional= teamService.listarPorId(team.getId());
+                       teamOptional.get().setGoalFor(0);
+                       teamOptional.get().setGoalAgainst(0);
+                       teamOptional.get().setMatchWon(0);
+                        teamOptional.get().setMatchLost(0);
+                        teamOptional.get().setMatchTied(0);
+                        teamOptional.get().setPoint(0);
+                        teamOptional.get().setGoalDifference(0);
+
+                    teamService.guardar(teamOptional.get());
+
+
+
+                });
 
         if(!torneoOptional.isPresent()){
             return ResponseEntity.unprocessableEntity().build();
@@ -121,16 +129,18 @@ public class TourmentController {
 
 
 
-     void CrearFechas(int idTourment)
+     void CrearFechas(int idTourment, int rondas)
 
 
     {
         Optional<Tourment> tourmentOptional=tourmentService.listarPorId(idTourment);
         List<Team> ListTeam=teamService.listarPorTorneo(tourmentOptional.get().getId());
 
-        if (ListTeam.size() % 2 != 0)
-        {
-            Team teamEmpy=new Team();
+
+
+        if (ListTeam.size() % 2 != 0) {
+
+           Team teamEmpy=new Team();
             teamEmpy.setNombre("Libre");
             teamEmpy.setTourment(tourmentOptional.get());
             teamEmpy.setSport(ListTeam.get(0).getSport());
@@ -138,6 +148,11 @@ public class TourmentController {
 
             Team newTeam=teamService.guardar(teamEmpy);
             ListTeam.add(newTeam); // If odd number of teams add a dummy
+
+;
+
+
+
         }
 
         int numDays = (ListTeam.size() - 1); // Days needed to complete tournament
@@ -149,11 +164,11 @@ public class TourmentController {
         teams.remove(0);
 
         int teamsSize = teams.size();
-        System.out.println(teamsSize);
+
 
         for (int day = 0; day < numDays; day++)
         {
-            System.out.println(("FECHA " + (day + 1)));
+
             //Crear la entidad fecha y agregar al torneo
             Program newProgram=new Program();
             newProgram.setDescription("FECHA " + (day + 1));
@@ -161,38 +176,36 @@ public class TourmentController {
             Program programSave=programService.guardar(newProgram);  //ok
 
             int teamIdx = day % teamsSize;
-            //obtener el equipo
-            Team teamX = teams.get(teamIdx);
-            Team team0= teams.get(0);
+
 
            //agregar el primer cruce a la fecha
-             Set<Game> listaDeJuegos=new HashSet<>() ;
-             Game firstGame=new Game();
 
 
-             firstGame.setTeam_1(teams.get(teamIdx));
-             firstGame.setTeam_2(ListTeam.get(0));
-             firstGame.setProgram(programSave);
-             Game gameGuardar=gameService.guardar(firstGame);
-             listaDeJuegos.add(gameGuardar);
 
-             System.out.println(( teams.get(teamIdx).getNombre()+" "+ ListTeam.get(0).getNombre()));
+               Game firstGame=new Game();
+               firstGame.setTeam_1(teams.get(teamIdx));
+               firstGame.setTeam_2(ListTeam.get(0));
+               firstGame.setProgram(programSave);
+               Game gameGuardar=gameService.guardar(firstGame);
+
+
+
+
 
             for (int idx = 1; idx < halfSize; idx++)
             {
                 int firstTeam = (day + idx) % teamsSize;
-                Team teamf= teams.get(firstTeam);
                 int secondTeam = (day  + teamsSize - idx) % teamsSize;
-                Team teamS= teams.get(secondTeam);
 
-                System.out.println((teams.get(firstTeam).getNombre()+" "+ teams.get(secondTeam).getNombre()));
                //se agregar el resto de los cruces
-                Game game=new Game();
-                game.setTeam_1(teams.get(firstTeam));
-                game.setTeam_2(teams.get(secondTeam));
-                game.setProgram(programSave);
-                Game gameGuard=gameService.guardar(game);
-                System.out.println(gameGuard);
+
+                   Game game=new Game();
+                   game.setTeam_1(teams.get(firstTeam));
+                   game.setTeam_2(teams.get(secondTeam));
+                   game.setProgram(programSave);
+                   Game gameGuard=gameService.guardar(game);
+
+
 
 
             }
@@ -201,6 +214,61 @@ public class TourmentController {
 
 
         }
+
+
+        //si rondas igual a 2
+       if(rondas!=1){
+           for (int day = numDays; day < numDays*rondas; day++)
+           {
+               System.out.println(("FECHA " + (day + 1)));
+               //Crear la entidad fecha y agregar al torneo
+               Program newProgram=new Program();
+               newProgram.setDescription("FECHA " + (day + 1));
+               newProgram.setTourment(tourmentOptional.get());
+               Program programSave=programService.guardar(newProgram);  //ok
+
+               int teamIdx = day % teamsSize;
+               //obtener el equipo
+               Team teamX = teams.get(teamIdx);
+               Team team0= teams.get(0);
+
+               //agregar el primer cruce a la fecha
+               Set<Game> listaDeJuegos=new HashSet<>() ;
+               Game firstGame=new Game();
+
+
+               firstGame.setTeam_1(teams.get(teamIdx));
+               firstGame.setTeam_2(ListTeam.get(0));
+               firstGame.setProgram(programSave);
+               Game gameGuardar=gameService.guardar(firstGame);
+               listaDeJuegos.add(gameGuardar);
+
+               System.out.println(( teams.get(teamIdx).getNombre()+" "+ ListTeam.get(0).getNombre()));
+
+               for (int idx = 1; idx < halfSize; idx++)
+               {
+                   int firstTeam = (day + idx) % teamsSize;
+                   Team teamf= teams.get(firstTeam);
+                   int secondTeam = (day  + teamsSize - idx) % teamsSize;
+                   Team teamS= teams.get(secondTeam);
+
+                   System.out.println((teams.get(firstTeam).getNombre()+" "+ teams.get(secondTeam).getNombre()));
+                   //se agregar el resto de los cruces
+                   Game game=new Game();
+                   game.setTeam_1(teams.get(firstTeam));
+                   game.setTeam_2(teams.get(secondTeam));
+                   game.setProgram(programSave);
+                   Game gameGuard=gameService.guardar(game);
+                   System.out.println(gameGuard);
+
+
+               }
+
+
+
+
+           }
+       }
     }
 
 

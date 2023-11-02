@@ -20,12 +20,12 @@ public class SportController {
 
 
     @GetMapping("/list")
-    public ResponseEntity<List<?>>listarDisciplinas(){
+    public ResponseEntity<List<?>>SportList(){
         return new ResponseEntity<>(sportService.listar(), HttpStatus.OK);
     }
 
     @GetMapping("list/{id}")
-    public ResponseEntity<?> obtenerDisciplinaPorId(@PathVariable int id){
+    public ResponseEntity<?> sportOfID(@PathVariable int id){
         Sport sport = sportService.listarporId(id).get();
 
         if(sport != null) {
@@ -36,12 +36,12 @@ public class SportController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> guardarDisciplina(@RequestBody Sport sport){
+    public ResponseEntity<?> save(@RequestBody Sport sport){
         return new ResponseEntity<>(sportService.guardar(sport),HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> editarContenido(@RequestBody Sport sport, @PathVariable int id){
+    public ResponseEntity<?> update(@RequestBody Sport sport, @PathVariable int id){
 
         Optional<Sport> optionalDisciplinaDeportiva = sportService.listarporId(id);
         if(!optionalDisciplinaDeportiva.isPresent()){
@@ -56,7 +56,7 @@ public class SportController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> eliminarContenido(@PathVariable int id){
+    public ResponseEntity<Void> delete(@PathVariable int id){
 
         Optional<Sport> disciplinaDeportivaOptional = sportService.listarporId(id);
 

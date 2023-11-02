@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="054a0631-51f8-4c0c-8172-ebdb23e30352" name="Changes" comment="creacion de entidades">
+      <change afterPath="$PROJECT_DIR$/API/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/ApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/ApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/ProgramController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/ProgramController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/SportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/SportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TeamsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TeamsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TourmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TourmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Tourment.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Tourment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/fixture.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TourmentProgramRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TourmentProgramRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TourmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TourmentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/ProgramService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/ProgramService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/ProgramServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/ProgramServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TeamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TeamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TourmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TourmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TourmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Services/TourmentServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
