@@ -34,6 +34,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    public Optional<Team> isRepeat(int sport_id, int unidad_id) {
+        return teamRepository.findRepeat(sport_id,unidad_id);
+    }
+
+    @Override
     public List<Team> listarPorDisciplina(int id) {
         return teamRepository.findByTeamsSport(id);
     }

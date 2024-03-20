@@ -1,5 +1,6 @@
 package juUnpa.API.Services;
 
+import juUnpa.API.Entities.Sport;
 import juUnpa.API.Entities.Team;
 
 import java.util.List;
@@ -10,6 +11,8 @@ public interface TeamService {
     Optional<Team> listarPorId(int id);
 
     Team guardar(Team team);
+
+    Optional<Team> isRepeat(int sport_id, int unidad_id);
 
     List<Team> listarPorDisciplina(int id);
 

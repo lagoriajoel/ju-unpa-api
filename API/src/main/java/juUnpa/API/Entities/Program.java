@@ -26,7 +26,7 @@ public class Program {
     @ManyToOne(fetch = FetchType.LAZY)
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JsonBackReference
-    @JoinColumn(name="tourment_id", nullable=false)
-    private Tourment tourment;
+    @JoinColumn(name="tournament_id", nullable=false)
+    private Tournament tournament;
 
 }

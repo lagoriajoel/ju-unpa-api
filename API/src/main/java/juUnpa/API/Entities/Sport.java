@@ -24,6 +24,8 @@ public class Sport {
     @NotBlank
     private String categoria;
 
+    private String image="";
+
     @OneToMany(mappedBy = "sport")
     @JsonBackReference
     private Set<Team> teams;

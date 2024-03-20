@@ -1,7 +1,5 @@
 package juUnpa.API.Controllers;
 
-import juUnpa.API.Entities.Sport;
-import juUnpa.API.Entities.Tourment;
 import juUnpa.API.Entities.UnidadAcademica;
 import juUnpa.API.Services.UnidadAcademicaService;
 import org.springframework.beans.factory.annotation.Autowired;

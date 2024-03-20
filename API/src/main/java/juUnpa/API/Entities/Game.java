@@ -15,16 +15,16 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String Fecha;
+    private String Fecha="";
 
-    private String lugar;
+    private String lugar="";
 
-    private String horario;
+    private String horario="";
 
 
-    private int score_1;
+    private int score_1=0;
 
-    private int score_2;
+    private int score_2=0;
 
     public Game() {
     }

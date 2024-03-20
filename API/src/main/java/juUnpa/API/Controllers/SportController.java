@@ -37,6 +37,8 @@ public class SportController {
 
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Sport sport){
+
+          sport.getNombre().toUpperCase();
         return new ResponseEntity<>(sportService.guardar(sport),HttpStatus.CREATED);
     }
 

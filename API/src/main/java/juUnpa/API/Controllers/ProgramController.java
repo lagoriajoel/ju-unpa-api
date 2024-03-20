@@ -1,9 +1,8 @@
 package juUnpa.API.Controllers;
 
 import juUnpa.API.Entities.Program;
-import juUnpa.API.Entities.Team;
 import juUnpa.API.Services.ProgramService;
-import juUnpa.API.Services.TourmentService;
+import juUnpa.API.Services.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ public class ProgramController {
     @Autowired
     ProgramService programService;
     @Autowired
-    TourmentService tourmentService;
+    TournamentService tournamentService;
 
     @GetMapping("/list")
     public ResponseEntity<List<?>> programsList(){

@@ -10,8 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController()
 @RequestMapping("/teams")
@@ -43,7 +45,12 @@ public class TeamsController {
         if (teamsofSport.isEmpty()){
             return ResponseEntity.badRequest().body(Collections.singletonMap("Mensaje", "No existen equipos para esta disciplina"));
         }
-        return ResponseEntity.ok(teamsofSport);
+
+        List<Team> ListaOrdenada= teamsofSport.stream()
+                .sorted(Comparator.comparingInt(Team::getPoint).reversed()).collect(Collectors.toList());
+
+
+        return ResponseEntity.ok(ListaOrdenada);
 
     }
     @GetMapping("listOfTourment/{id}")
@@ -61,19 +68,22 @@ public class TeamsController {
     public ResponseEntity<?> save(@RequestBody Team team){
 
 
-        Team teamOptional=Service.guardar(team);
-       if (teamOptional==null) {
-           return ResponseEntity.badRequest().body(Collections.singletonMap("Mensaje", "Error al guardar Equipo"));
 
-       }
 
-        return new ResponseEntity<>(teamOptional,HttpStatus.CREATED);
+
+        Optional<Team> teamOptional=Service.isRepeat(team.getSport().getId(), team.getUnidadAcademica().getId());
+
+        if (!teamOptional.isEmpty())
+            return ResponseEntity.badRequest().body(Collections.singletonMap("Mensaje", "El equipo ya existe"));
+
+
+
+        return new ResponseEntity<>(Service.guardar(team),HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable int id,@RequestBody Team team){
 
         Optional<Team> optionalTeam= Service.listarPorId(id);
-
         optionalTeam.get().setGoalAgainst(optionalTeam.get().getGoalAgainst()+ team.getGoalAgainst());
         optionalTeam.get().setGoalFor(optionalTeam.get().getGoalFor()+ team.getGoalFor());
         optionalTeam.get().setMatchLost(optionalTeam.get().getMatchLost()+team.getMatchLost());
