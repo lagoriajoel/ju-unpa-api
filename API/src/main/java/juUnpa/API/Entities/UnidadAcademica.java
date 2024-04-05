@@ -19,11 +19,11 @@ public class UnidadAcademica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank
-    private String nombre;
+    private String name;
     @NotBlank
-    private String localidad;
+    private String place;
     @NotBlank
-    private String siglas;
+    private String acronym;
 
     @OneToMany(mappedBy = "unidadAcademica")
     @JsonBackReference

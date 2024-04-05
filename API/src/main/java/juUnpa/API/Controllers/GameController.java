@@ -56,9 +56,9 @@ public class GameController {
 
         Optional<Game> gameOptional=gameService.listarPorId(id);
 
-        gameOptional.get().setFecha(game.getFecha());
-        gameOptional.get().setLugar(game.getLugar());
-        gameOptional.get().setHorario(game.getHorario());
+        gameOptional.get().setDate(game.getDate());
+        gameOptional.get().setPlace(game.getPlace());
+        gameOptional.get().setSchedule(game.getSchedule());
         gameOptional.get().setScore_1(game.getScore_1());
         gameOptional.get().setScore_2(game.getScore_2());
 

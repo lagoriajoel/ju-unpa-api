@@ -18,7 +18,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String nombre;
+    private String name;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -43,7 +43,7 @@ public class Team {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
-    @JoinColumn(name="torneo_id")
+    @JoinColumn(name="tournament_id")              //se cambia torneo_id por tournament_id
     private Tournament tournament;
 
    // @OneToMany(mappedBy = "team_1", cascade = CascadeType.ALL, orphanRemoval = true)

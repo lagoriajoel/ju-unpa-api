@@ -20,9 +20,9 @@ public class Sport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank
-    private String nombre;
+    private String name;
     @NotBlank
-    private String categoria;
+    private String category;
 
     private String image="";
 

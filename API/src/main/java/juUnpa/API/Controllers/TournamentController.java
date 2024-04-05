@@ -115,7 +115,7 @@ public class TournamentController {
                         teamOptional.get().setPoint(0);
                         teamOptional.get().setGoalDifference(0);
 
-                   if(teamOptional.get().getNombre().equals("Libre")){
+                   if(teamOptional.get().getName().equals("Libre")){
                        teamService.eliminar(teamOptional.get().getId());
                    }
                    else teamService.guardar(teamOptional.get());
@@ -145,7 +145,7 @@ public class TournamentController {
         if (ListTeam.size() % 2 != 0) {
 
            Team teamEmpy=new Team();
-            teamEmpy.setNombre("Libre");
+            teamEmpy.setName("Libre");
             teamEmpy.setTournament(tourmentOptional.get());
             teamEmpy.setSport(ListTeam.get(0).getSport());
             teamEmpy.setUnidadAcademica(ListTeam.get(0).getUnidadAcademica());
@@ -243,7 +243,7 @@ public class TournamentController {
                Game gameGuardar=gameService.guardar(firstGame);
                listaDeJuegos.add(gameGuardar);
 
-               System.out.println(( teams.get(teamIdx).getNombre()+" "+ ListTeam.get(0).getNombre()));
+               System.out.println(( teams.get(teamIdx).getName()+" "+ ListTeam.get(0).getName()));
 
                for (int idx = 1; idx < halfSize; idx++)
                {
@@ -252,7 +252,7 @@ public class TournamentController {
                    int secondTeam = (day  + teamsSize - idx) % teamsSize;
                    Team teamS= teams.get(secondTeam);
 
-                   System.out.println((teams.get(firstTeam).getNombre()+" "+ teams.get(secondTeam).getNombre()));
+                   System.out.println((teams.get(firstTeam).getName()+" "+ teams.get(secondTeam).getName()));
                    //se agregar el resto de los cruces
                    Game game=new Game();
                    game.setTeam_1(teams.get(firstTeam));

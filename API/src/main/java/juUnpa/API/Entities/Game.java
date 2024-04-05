@@ -15,11 +15,13 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String Fecha="";
+    private String Date="";
 
-    private String lugar="";
+    private String place="";
 
-    private String horario="";
+
+
+    private String schedule="";
 
 
     private int score_1=0;
@@ -51,21 +53,30 @@ public class Game {
         this.id = id;
     }
 
-    public String getFecha() {
-        return Fecha;
+    public String getDate() {
+        return Date;
     }
 
-    public void setFecha(String fecha) {
-        Fecha = fecha;
+    public void setDate(String date) {
+        Date = date;
     }
 
-    public String getLugar() {
-        return lugar;
+    public String getPlace() {
+        return place;
     }
 
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
+    public void setPlace(String place) {
+        this.place = place;
     }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
 
     public int getScore_1() {
         return score_1;
@@ -103,13 +114,6 @@ public class Game {
         return team_2;
     }
 
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
 
     public void setTeam_2(Team team_2) {
         this.team_2 = team_2;

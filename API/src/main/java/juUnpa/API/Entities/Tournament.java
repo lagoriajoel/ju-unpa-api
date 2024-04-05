@@ -16,9 +16,9 @@ public class Tournament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String tipo;
+    private String type;
 
-    private String nombre;
+    private String name;
 
     @OneToOne()
     @JoinColumn(name = "sport_id", referencedColumnName = "id")
