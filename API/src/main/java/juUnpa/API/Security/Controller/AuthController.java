@@ -1,4 +1,5 @@
 package juUnpa.API.Security.Controller;
+import juUnpa.API.Entities.Sport;
 import juUnpa.API.Security.DTO.*;
 import juUnpa.API.Security.Entity.Rol;
 import juUnpa.API.Security.Entity.Usuario;
@@ -89,6 +90,36 @@ public class AuthController {
 
 
         }
+    @GetMapping("/listById/{id}")
+    public ResponseEntity<?> listByNameUser(@PathVariable int id){
+
+        return ResponseEntity.ok(usuarioService.getById(id));
+
+
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> listByNameUser( @RequestBody Usuario usuario,@PathVariable int id){
+
+        Optional<Usuario> usuarioOptional = usuarioService.getById(id);
+        if(!usuarioOptional.isPresent()){
+
+
+            return ResponseEntity.unprocessableEntity().build();
+        }
+
+        usuario.setId(usuarioOptional.get().getId());
+        usuarioService.save(usuario);
+        return ResponseEntity.ok().build();
+
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<?> listUser(){
+
+        return ResponseEntity.ok(usuarioService.getUsuario());
+
+
+    }
 
 
     @PutMapping("/changePassword/{nombreUsuario}")

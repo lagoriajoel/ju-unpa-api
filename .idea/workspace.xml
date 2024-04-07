@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="054a0631-51f8-4c0c-8172-ebdb23e30352" name="Changes" comment="creacion de entidades">
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/DTO/JwtDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/DTO/LoginUsuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/DTO/Mensaje.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/DTO/NuevoUsuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/DTO/changePassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Entity/Rol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Entity/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Entity/UsuarioPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/API/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/SportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/SportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TournamentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Controllers/TournamentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Sport.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Sport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Tournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/Tournament.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/UnidadAcademica.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Entities/UnidadAcademica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TeamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Repositories/TeamRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/API/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Repositories/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Services/UsuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,14 +47,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/proyectos 2023/juegos unpa/API/API/src/main/java/juUnpa/API/Security/Services&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/proyectos 2023/juegos unpa/API/API/src/main/java/juUnpa/API/Security/Services",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\proyectos 2023\juegos unpa\API\API\src\main\java\juUnpa\API\Security\Services" />
