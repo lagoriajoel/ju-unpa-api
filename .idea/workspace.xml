@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="054a0631-51f8-4c0c-8172-ebdb23e30352" name="Changes" comment="creacion de entidades">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/API/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Repositories/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/juUnpa/API/Security/Services/UsuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
